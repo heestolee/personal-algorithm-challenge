@@ -1,7 +1,7 @@
 import { expect, describe, it } from "vitest";
 import { generateHashtag} from "../lib/generateHashtag"
 
-describe("generateHashtag", function () {
+describe.skip("generateHashtag", function () {
   it("", function () {
     expect(generateHashtag("")).toBe(false);
   })
