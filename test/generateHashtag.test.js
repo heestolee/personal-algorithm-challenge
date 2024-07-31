@@ -1,7 +1,7 @@
 import { expect, describe, it } from "vitest";
-import { generateHashtag} from "../lib/generateHashtag"
+import generateHashtag from "../lib/generateHashtag"
 
-describe.skip("generateHashtag", function () {
+describe("generateHashtag", function () {
   it("", function () {
     expect(generateHashtag("")).toBe(false);
   })
@@ -43,5 +43,15 @@ describe.skip("generateHashtag", function () {
   })
 })
 
-
-
+describe("random test", function () {
+  it("Random tests", () => {
+    const rnd = a => Math.floor(Math.random() * a);
+    const letters = "aabcdeeefghiijklmnoopqrstuuvwxyz";
+    for(let _ = 0; _ < 75; ++_) {
+      let input = Array.from({length: rnd(12)}, () => Array.from({length: rnd(6)}, () => letters[rnd(letters.length)]).join("")).join(" ");
+      let expected = '#'+input.trim().split(/\s+/).map(w => w && w[0].toUpperCase() + w.slice(1)).join("");
+      expected = expected.length > 1 && expected.length <= 140 && expected;
+      expect(generateHashtag(input)).toBe(expected);
+    }
+  });
+})
